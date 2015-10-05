@@ -11,12 +11,15 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//Route::get('/', function () {
-//    return 'hello';
-//});
+Route::get('/', function () {
+    return view('login');
+});
+Route::get('/register', function () {
+    return view('register');
+});
+Route::get('/hello', function () {
+    return view('hello');
+});
 Route::get('/{id}', function ($id) {
     if($id == 1){
         return view("welcome");
