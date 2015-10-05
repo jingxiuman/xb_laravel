@@ -12,19 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('index');
 });
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/hello', function () {
-    return view('hello');
-});
-Route::get('/{id}', function ($id) {
-    if($id == 1){
-        return view("welcome");
-    }else{
-        return 'User '.$id;
-    }
+Route::post('register/create', [
+    'as' => 'profile', 'uses' => 'UserController@register'
+]);
 
-});
