@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>ThoughAdmin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -38,14 +39,14 @@
         <a href="/"><b>ThoughAdmin</b>登陆界面</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg text-red"></p>
         <form action="/" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="username">
+            <input type="text" class="form-control" name="username" id="index_username" placeholder="username">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" name="password" id="index_password" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -57,11 +58,11 @@
               </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">登陆</button>
+              <button type="button" class="btn btn-primary btn-block btn-flat" id="index_btn">登陆</button>
             </div><!-- /.col -->
           </div>
         </form>
-        <a href="#">我忘记了密码</a><br>
+        {{--<a href="#">我忘记了密码</a><br>--}}
         <a href="/register" class="text-center">注册新账号</a>
 
       </div><!-- /.login-box-body -->

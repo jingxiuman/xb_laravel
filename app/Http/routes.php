@@ -20,4 +20,7 @@ Route::get('/register', function () {
 Route::post('register/create', [
     'as' => 'profile', 'uses' => 'UserController@register'
 ]);
-
+Route::post('register/login',  'UserController@login');
+Route::get("/dashBord", function(){
+    return "login";
+});

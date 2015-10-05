@@ -35,7 +35,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $hidden = ['un_pass', 'remember_token'];
+    protected $hidden = [ 'remember_token'];
 
     /**
      * Indicates if the model should be timestamped.

@@ -8,9 +8,11 @@
 namespace App\Http\Controllers;
 
 use Hash;
+use Crypt;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
@@ -39,5 +41,33 @@ class UserController extends Controller
             return 1;
         }
         return $request->all();
+    }
+    /**
+     *
+     * 登陆方法
+     */
+    public function login(Request $request){
+        $username = $request->input("username");
+        $password = Hash::make($request->input("password"));
+        $data = User::where(['un_user'=>$username]);
+       // echo $data->count();
+        $flag =0;
+        if($data->count()){
+            //echo $data->first()->un_pass;
+            if (Hash::check($data->first()->un_pass, $password)) {
+                // The passwords match...
+                Cookie::make(md5("username"),Crypt::encrypt($username));
+                redirect("/dashBord");
+                $flag = 1;
+            }else{
+                $flag=2;
+            }
+
+        }else{
+
+            $flag = 0;
+        }
+        return $flag;
+
     }
 }
