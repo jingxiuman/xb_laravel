@@ -28,7 +28,7 @@
       .xb_login{
         background-image: url(img/index_bg.jpg);
         background-position: center;
-        background-size: 100%;
+        background-size:auto 100%;
       }
 
     </style>

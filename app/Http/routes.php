@@ -17,6 +17,9 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/dashBord', function(){
+    return 'welcome';
+});
 Route::post('register/create', [
     'as' => 'profile', 'uses' => 'UserController@register'
 ]);

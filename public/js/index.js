@@ -26,6 +26,8 @@ $(function () {
                 success: function (data) {
                     if (data == 0) {
                         $(".login-box-msg").html("用户名或者密码错误")
+                    }else if(data == 1){
+                        window.location='/dashBord'
                     }
                 }
             })

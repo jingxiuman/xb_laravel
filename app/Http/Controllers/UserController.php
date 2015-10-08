@@ -48,16 +48,18 @@ class UserController extends Controller
      */
     public function login(Request $request){
         $username = $request->input("username");
-        $password = Hash::make($request->input("password"));
+        $password = $request->input("password");
         $data = User::where(['un_user'=>$username]);
        // echo $data->count();
         $flag =0;
         if($data->count()){
             //echo $data->first()->un_pass;
-            if (Hash::check($data->first()->un_pass, $password)) {
+            if (Hash::check($password,$data->first()->un_pass)) {
                 // The passwords match...
-                Cookie::make(md5("username"),Crypt::encrypt($username));
-                redirect("/dashBord");
+                Cookie::queue(md5("username"),$username,10);
+              // echo $name;
+              // redirectToRoute("/dashBord");
+                //return View::make(xxx)->withCookie($name);
                 $flag = 1;
             }else{
                 $flag=2;
